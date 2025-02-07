@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     private String computerWord;
-    private static final String[] words = {"apple", "plane", "place", "paper"};
 
     public Main(){
-        Random ran = new Random();computerWord = RandomWordGenerator.getRandomWord();
+        Random ran = new Random();
+        computerWord = RandomWordGenerator.getRandomWord();
     }
 
     public Main(String fixedWord){  // 테스트용 생성자. 삭제 금지.
@@ -27,7 +27,7 @@ public class Main {
         System.out.println("단어 맞추기 게임을 시작합니다.");
         while (true) {
             System.out.print("단어를 입력해주세요: ");
-            String input = scanner.nextLine().trim();
+            String input = scanner.next();
 
             if (input.length() != computerWord.length() || !input.matches("[a-zA-Z]+")) {
                 throw new IllegalArgumentException("5글자 알파벳으로 된 단어를 입력하세요.");
@@ -71,9 +71,7 @@ public class Main {
                 if (num == 2) {
                     break;
                 } else if (num == 1) {
-                    Random ran = new Random();
-                    computerWord = words[ran.nextInt(words.length)];
-                    scanner.nextLine(); // 버퍼 초기화
+                    computerWord = RandomWordGenerator.getRandomWord();
                 }
                 else {
                     throw new IllegalArgumentException("1 또는 2를 입력하세요.");
