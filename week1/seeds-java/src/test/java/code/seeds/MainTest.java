@@ -38,7 +38,7 @@ class MainTest {
     }
 
     @Test
-    @DisplayName("정상 동작: 고정 단어 'paper'에서 올바른 힌트 생성 및 정답 처리")
+    @DisplayName("정상 동작: 고정 단어 'paper' 에서 올바른 힌트 생성 및 정답 처리")
     void 정상동작_테스트() {
         Main mainApp = new Main("paper");
         String input = String.join("\n",
@@ -54,7 +54,7 @@ class MainTest {
         assertThat(lines.get(0)).isEqualTo("단어 맞추기 게임을 시작합니다.");
         assertThat(lines).filteredOn(line -> line.contains("단어를 입력해주세요:")).isNotEmpty();
         assertThat(lines).anySatisfy(line ->
-                assertThat(line).contains("1매치 3틀림")
+                assertThat(line).contains("1매치 2틀림")
         );
         assertThat(lines).anySatisfy(line ->
                 assertThat(line).contains("정답입니다! 게임 종료")
