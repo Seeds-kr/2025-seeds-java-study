@@ -1,10 +1,11 @@
 package code.seeds;
 
+import code.seeds.util.InputValidator;
 import java.util.Scanner;
 
 public class Main {
 
-    private String computerWord;
+    private final String computerWord;
 
     public Main(){
         computerWord = RandomWordGenerator.getRandomWord();
@@ -24,6 +25,6 @@ public class Main {
     public void run(Scanner scanner) {
         System.out.print("단어를 입력해주세요: ");
         String input = scanner.nextLine().trim();
-        // 컴퓨터 랜덤 단어 생성은 RandomWordGenerator.getRandomWord(); 를 이용한다.
+        String validatedInput = InputValidator.validate(input);
     }
 }
