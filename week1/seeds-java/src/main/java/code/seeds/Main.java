@@ -26,26 +26,33 @@ public class Main {
 
     public void run(Scanner scanner) {
         System.out.println("단어 맞추기 게임을 시작합니다.");
-
         Word answer = Word.of(computerWord);
+        playGameLoop(scanner, answer);
+        processRestart(scanner);
+    }
 
+    private void playGameLoop(Scanner scanner, Word answer){
         while (true) {
             System.out.print("단어를 입력해주세요: ");
             String input = scanner.nextLine();
 
             Word guess = Word.of(input);
 
-            if (answer.getValue().equals(guess.getValue())) {
+            if (isCorrectGuess(answer, guess)) {
                 System.out.println("정답입니다! 게임 종료");
                 break;
             }
 
-
             Hint hint = answer.compareWith(guess);
             System.out.println(hint.format());
         }
+    }
 
+    private boolean isCorrectGuess(Word answer, Word guess) {
+        return answer.getValue().equals(guess.getValue());
+    }
 
+    private void processRestart(Scanner scanner) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInput = scanner.nextLine().trim();
         if ("1".equals(restartInput)) {

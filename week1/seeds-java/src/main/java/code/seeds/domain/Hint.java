@@ -9,18 +9,16 @@ public class Hint {
         this.misplacedCount = misplacedCount;
     }
 
-    public String format(){
-        if (matchCount == 0 && misplacedCount == 0){
+    public String format() {
+        if (matchCount == 0 && misplacedCount == 0) {
             return "없음";
         }
+        if (matchCount == 0) {
+            return String.format("%d틀림", misplacedCount);
+        }
+        if (misplacedCount == 0) {
+            return String.format("%d매치", matchCount);
+        }
         return String.format("%d매치 %d틀림", matchCount, misplacedCount);
-    }
-
-    public int getMatchCount(){
-        return matchCount;
-    }
-
-    public int getMisplacedCount(){
-        return misplacedCount;
     }
 }
