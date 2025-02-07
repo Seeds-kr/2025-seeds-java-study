@@ -45,12 +45,13 @@ public class Main {
             System.out.println(hint.format());
         }
 
-        // 게임 종료 후 재시작/종료 안내 메시지 출력
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInput = scanner.nextLine().trim();
         if ("1".equals(restartInput)) {
             run(scanner);
+        } else if (!"2".equals(restartInput)) {
+            throw new IllegalArgumentException("1 또는 2");
         }
-        // "2" 혹은 그 외 입력이면 종료합니다.
     }
 }
